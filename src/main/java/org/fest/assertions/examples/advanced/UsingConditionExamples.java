@@ -18,13 +18,25 @@ public class UsingConditionExamples extends AbstractAssertionsExamples {
   @Test
   public void is_condition_example() {
     assertThat("Yoda").is(jedi);
-    assertThat("Vador").isNot(jedi);
+    assertThat("Vader").isNot(jedi);
+    try {
+      // condition not verified to show the clean error message 
+      assertThat("Vader").is(jedi);
+    } catch (AssertionError e) {
+      assertThat(e).hasMessage("expecting:<'Vader'> to be:<jedi>");
+    }
   }
 
   @Test
   public void has_condition_example() {
     assertThat("Yoda").has(jediPower);
     assertThat("Solo").doesNotHave(jediPower);
+    try {
+      // condition not verified to show the clean error message 
+      assertThat("Vader").has(jediPower);
+    } catch (AssertionError e) {
+      assertThat(e).hasMessage("expecting:<'Vader'> to have:<jedi power>");
+    }
   }
 
   @SuppressWarnings("unchecked")
@@ -32,7 +44,7 @@ public class UsingConditionExamples extends AbstractAssertionsExamples {
   public void anyOf_condition_example() {
     assertThat("Vader").is(anyOf(jedi, sith));
   }
-  
+
   @Test
   public void condition_example_on_multiple_elements() {
     // are & areNot
@@ -92,7 +104,7 @@ public class UsingConditionExamples extends AbstractAssertionsExamples {
     @Override
     public boolean matches(String value) {
       return jedis.contains(value);
-    };
+    }
   };
 
   private final Condition<String> jediPower = new Condition<String>("jedi power") {
@@ -101,7 +113,7 @@ public class UsingConditionExamples extends AbstractAssertionsExamples {
     @Override
     public boolean matches(String value) {
       return jedis.contains(value);
-    };
+    }
   };
 
   private final Condition<String> sith = new Condition<String>("sith") {
@@ -110,7 +122,7 @@ public class UsingConditionExamples extends AbstractAssertionsExamples {
     @Override
     public boolean matches(String value) {
       return siths.contains(value);
-    };
+    }
   };
 
   private final Condition<String> sithPower = new Condition<String>("sith power") {
@@ -119,7 +131,7 @@ public class UsingConditionExamples extends AbstractAssertionsExamples {
     @Override
     public boolean matches(String value) {
       return siths.contains(value);
-    };
+    }
   };
 
 }
