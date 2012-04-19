@@ -40,8 +40,8 @@ public class TolkienCharacterAssert extends AbstractAssert<TolkienCharacterAsser
   }
 
   // 3 - A fluent entry point to your specific assertion class
-  // the other option here is to gather all your specific assertions entry point to a class inehriting from Assertions
-  // thus this class will be your oonly entry poiny to all Fest assertions and YOURS.
+  // the other option here is to gather all your specific assertions entry point to a class inheriting from Assertions
+  // thus this class will be your only entry point to all Fest assertions and YOURS.
   // see MyProjectAssertions for an example.
   /**
    * An entry point for TolkienCharacterAssert to follow Fest standard <code>assertThat()</code> statements.<br>
